@@ -1,0 +1,800 @@
+<header class="nav">
+  <div class="container nav-inner">
+    <span class="logo">{{ profile.name.split(' ')[0] }}</span>
+
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#opensource">Open Source</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+
+<!-- ========================================
+     HERO
+======================================== -->
+
+<section class="hero">
+  <div class="container hero-grid">
+
+    <!-- LEFT SIDE -->
+    <div class="reveal-left">
+
+      <span class="pill">
+        {{ profile.availability }}
+      </span>
+
+      <h1 class="hero-title">
+        Hi, I'm {{ profile.name }}
+      </h1>
+
+      <p class="hero-tagline">
+        {{ profile.tagline }}
+      </p>
+
+      <div class="hero-actions">
+
+        <a
+          class="btn btn-primary"
+          href="#projects">
+          View Work
+        </a>
+
+        <a
+          class="btn btn-ghost"
+          [href]="profile.resumeUrl"
+          download>
+          Download CV
+        </a>
+
+      </div>
+
+      <div class="social-row">
+
+        <a
+          [href]="profile.github"
+          target="_blank">
+          GitHub
+        </a>
+
+        <a
+          [href]="profile.linkedin"
+          target="_blank">
+          LinkedIn
+        </a>
+
+        <a
+          *ngIf="profile.extraLink"
+          [href]="profile.extraLink"
+          target="_blank">
+          More
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+    <div class="code-card reveal-right">
+
+      <div class="code-card-header">
+        developer.ts
+      </div>
+
+      <pre class="code-block"><span class="code-kw">const</span> developer = &#123;
+  name: <span class="code-str">'{{ profile.name }}'</span>,
+  role: <span class="code-str">'{{ profile.role }}'</span>,
+  skills: [<span class="code-str">'{{ skillGroups[0].skills.join("', '") }}'</span>],
+&#125;;
+
+developer.buildAwesomeThings();</pre>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- ========================================
+     ABOUT
+======================================== -->
+
+<section
+  id="about"
+  class="container reveal">
+
+  <h2 class="section-title">
+    About Me
+  </h2>
+
+  <p class="about-text">
+    {{ aboutMe }}
+  </p>
+
+
+  <!-- Skills -->
+
+  <div class="skills-grid reveal-stagger">
+
+    <div
+      class="skill-group"
+      *ngFor="let group of skillGroups">
+
+      <h3 class="skill-group-title">
+        {{ group.category }}
+      </h3>
+
+      <div class="skill-tags">
+
+        <span
+          class="tag"
+          *ngFor="let s of group.skills">
+          {{ s }}
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ========================================
+     EXPERIENCE
+======================================== -->
+
+<section
+  id="experience"
+  class="container reveal">
+
+  <h2 class="section-title">
+    Professional Experience
+  </h2>
+
+  <p class="section-sub">
+    Roles I've held and what I owned in each of them.
+  </p>
+
+
+  <div class="timeline reveal-stagger">
+
+    <div
+      class="timeline-item"
+      *ngFor="let job of experience; let i = index">
+
+      <div class="timeline-head">
+
+        <div>
+
+          <h3>
+            {{ job.role }}
+          </h3>
+
+          <p class="timeline-company">
+            {{ job.company }}
+          </p>
+
+        </div>
+
+        <span class="timeline-dates">
+          {{ job.dates }}
+        </span>
+
+      </div>
+
+
+      <div class="skill-tags">
+
+        <span
+          class="tag"
+          *ngFor="let t of job.tags">
+
+          {{ t }}
+
+        </span>
+
+      </div>
+
+
+      <button
+        class="link-btn"
+        (click)="toggleExperience(i)">
+
+        {{
+          expandedIndex === i
+            ? 'Hide Responsibilities'
+            : 'View Responsibilities'
+        }}
+
+      </button>
+
+
+      <ul
+        class="bullets"
+        *ngIf="expandedIndex === i">
+
+        <li
+          *ngFor="let b of job.bullets">
+
+          {{ b }}
+
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ========================================
+     PROJECTS
+======================================== -->
+
+<section
+  id="projects"
+  class="container reveal">
+
+  <h2 class="section-title">
+    Featured Projects
+  </h2>
+
+  <p class="section-sub">
+    A selection of things I've built.
+  </p>
+
+
+  <div class="card-grid reveal-stagger">
+
+    <div
+      class="card"
+      *ngFor="let p of projects">
+
+      <span class="card-eyebrow">
+        {{ p.role }}
+      </span>
+
+      <h3>
+        {{ p.title }}
+      </h3>
+
+      <p class="card-desc">
+        {{ p.description }}
+      </p>
+
+
+      <div class="skill-tags">
+
+        <span
+          class="tag"
+          *ngFor="let t of p.tags">
+
+          {{ t }}
+
+        </span>
+
+      </div>
+
+
+      <button
+        class="link-btn"
+        (click)="openProject(p)">
+
+        View Details
+
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ========================================
+     OPEN SOURCE
+======================================== -->
+
+<section
+  id="opensource"
+  class="container reveal">
+
+  <h2 class="section-title">
+    Open Source
+  </h2>
+
+  <p class="section-sub">
+    Tools and libraries I maintain for the community.
+  </p>
+
+
+  <div class="card-grid reveal-stagger">
+
+    <a
+      class="card"
+      *ngFor="let pkg of openSource"
+      [href]="pkg.link"
+      target="_blank">
+
+      <h3>
+        {{ pkg.name }}
+      </h3>
+
+      <p class="card-desc">
+        {{ pkg.description }}
+      </p>
+
+
+      <div class="skill-tags">
+
+        <span
+          class="tag"
+          *ngFor="let t of pkg.tags">
+
+          {{ t }}
+
+        </span>
+
+      </div>
+
+
+      <div class="pkg-stats">
+
+        <span>
+          {{ pkg.downloads }} downloads
+        </span>
+
+        <span>
+          {{ pkg.stars }} stars
+        </span>
+
+      </div>
+
+    </a>
+
+  </div>
+
+</section>
+
+
+
+<!-- ========================================
+     EDUCATION
+======================================== -->
+
+<section
+  id="education"
+  class="education-section reveal">
+
+
+  <!-- Education Heading -->
+
+  <div class="education-heading">
+
+    <div class="heading-content">
+
+      <!-- Graduation Cap Icon -->
+
+      <svg
+        class="graduation-icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round">
+
+        <path d="M22 10L12 5 2 10l10 5 10-5z"></path>
+
+        <path d="M6 12v5c3 2 9 2 12 0v-5"></path>
+
+        <path d="M22 10v6"></path>
+
+      </svg>
+
+      <h2>
+        Education
+      </h2>
+
+    </div>
+
+
+    <div class="heading-line"></div>
+
+  </div>
+
+
+
+  <!-- Education Cards -->
+
+  <div class="education-list reveal-stagger">
+
+    <div
+      class="education-card"
+      *ngFor="let ed of education">
+
+
+      <!-- Award Icon -->
+
+      <div class="education-icon">
+
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round">
+
+          <circle
+            cx="12"
+            cy="8"
+            r="5">
+          </circle>
+
+          <path
+            d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5">
+          </path>
+
+        </svg>
+
+      </div>
+
+
+
+      <!-- Education Details -->
+
+      <div class="education-content">
+
+        <h3>
+          {{ ed.degree }}
+        </h3>
+
+        <p class="education-school">
+          {{ ed.school }}
+        </p>
+
+        <p class="education-note">
+          {{ ed.note }}
+        </p>
+
+      </div>
+
+
+
+      <!-- Education Year -->
+
+      <div class="education-year">
+
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round">
+
+          <rect
+            x="3"
+            y="4"
+            width="18"
+            height="18"
+            rx="2">
+          </rect>
+
+          <line
+            x1="16"
+            y1="2"
+            x2="16"
+            y2="6">
+          </line>
+
+          <line
+            x1="8"
+            y1="2"
+            x2="8"
+            y2="6">
+          </line>
+
+          <line
+            x1="3"
+            y1="10"
+            x2="21"
+            y2="10">
+          </line>
+
+        </svg>
+
+        <span>
+          {{ ed.year }}
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ========================================
+     CONTACT
+======================================== -->
+
+<!-- <==============================
+     CONTACT SECTION
+================================= -->
+<section id="contact" class="contact-section reveal">
+
+  <div class="contact-heading">
+    <h2>Get In Touch</h2>
+
+    <p>
+      I'm currently available for new opportunities. Whether you have a question 
+      
+      just want to say hi, I'll try my best to get back to you!
+    </p>
+  </div>
+
+  <div class="contact-grid contact-cards reveal-stagger">
+
+    <!-- EMAIL -->
+    <div class="contact-card email-card">
+
+      <div class="contact-icon">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+          <polyline points="3,7 12,13 21,7"></polyline>
+        </svg>
+      </div>
+
+      <h3>Email</h3>
+
+      <a
+        [href]="'mailto:' + profile.email"
+        class="contact-value"
+      >
+        {{ profile.email }}
+      </a>
+
+    </div>
+
+
+    <!-- PHONE -->
+    <div class="contact-card phone-card">
+
+      <div class="contact-icon">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2
+            19.79 19.79 0 0 1-8.63-3.07
+            19.5 19.5 0 0 1-6-6
+            19.79 19.79 0 0 1-3.07-8.67
+            A2 2 0 0 1 4.11 2h3
+            a2 2 0 0 1 2 1.72
+            12.84 12.84 0 0 0 .7 2.81
+            2 2 0 0 1-.45 2.11L8.09 9.91
+            a16 16 0 0 0 6 6l1.27-1.27
+            a2 2 0 0 1 2.11-.45
+            12.84 12.84 0 0 0 2.81.7
+            A2 2 0 0 1 22 16.92z"
+          ></path>
+        </svg>
+      </div>
+
+      <h3>Phone</h3>
+
+      <a
+        [href]="'tel:' + profile.phone"
+        class="contact-value"
+      >
+        {{ profile.phone }}
+      </a>
+
+    </div>
+
+
+    <!-- LOCATION -->
+    <div class="contact-card location-card">
+
+      <div class="contact-icon">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M21 10c0 7-9 12-9 12S3 17 3 10
+            a9 9 0 1 1 18 0z"
+          ></path>
+
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+      </div>
+
+      <h3>Location</h3>
+
+      <p class="contact-value location-value">
+        <a href="https://www.google.com/maps/place/PVS+Circle,+Kodailbail,+Mangaluru,+Karnataka+575003/@12.8759559,74.8393154,943m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3ba35a4f81e7d9c9:0x999d0ad4664c3754!8m2!3d12.8759507!4d74.8418957!16s%2Fg%2F11bzjhclcg?entry=ttu&g_ep=EgoyMDI2MDkyMC4wIKXMDSoASAFQAw%3D%3D"></a>
+        Mangalore, Karnataka-<br />
+        575 003
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- ========================================
+     FOOTER
+======================================== -->
+
+<footer class="footer">
+
+  <div class="container footer-inner">
+
+    <span class="logo">
+      {{ profile.name.split(' ')[0] }}.
+    </span>
+
+
+    <div class="social-row">
+
+      <a
+        [href]="profile.github"
+        target="_blank">
+        GitHub
+      </a>
+
+      <a
+        [href]="profile.linkedin"
+        target="_blank">
+        LinkedIn
+      </a>
+
+    </div>
+
+
+    <p class="footer-copy">
+
+      © {{ currentYear }}
+      {{ profile.name }}.
+      All rights reserved.
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+
+<!-- ========================================
+     PROJECT DETAILS MODAL
+======================================== -->
+
+<div
+  class="modal-overlay"
+  *ngIf="selectedProject"
+  (click)="closeProject()">
+
+
+  <div
+    class="modal-card"
+    (click)="$event.stopPropagation()">
+
+
+    <!-- Close Button -->
+
+    <button
+      class="modal-close"
+      (click)="closeProject()"
+      aria-label="Close">
+
+      &times;
+
+    </button>
+
+
+    <!-- Project Title -->
+
+    <h3 class="modal-title">
+      {{ selectedProject.title }}
+    </h3>
+
+
+    <!-- Project Role -->
+
+    <p class="modal-role">
+      {{ selectedProject.role }}
+    </p>
+
+
+    <!-- Features -->
+
+    <h4 class="modal-label">
+      Key Responsibilities &amp; Features
+     
+      <Li>Advanced Technology Based </Li>
+      <li>97% Accuracy Achieved</li>
+      <li>Individual Project</li>
+    </h4>
+
+    <ul class="modal-bullets">
+
+      <li
+        *ngFor="let f of selectedProject.features">
+
+        {{ f }}
+
+      </li>
+
+    </ul>
+
+
+    <!-- Technologies -->
+
+    <h4 class="modal-label">
+      Technologies Used
+    </h4>
+
+    <div class="skill-tags">
+
+      <span
+        class="tag"
+        *ngFor="let t of selectedProject.tags">
+
+        {{ t }}
+
+      </span>
+
+    </div>
+
+
+    <!-- Project Link -->
+
+    <a
+      *ngIf="selectedProject.link"
+      class="link-btn modal-link"
+      [href]="selectedProject.link"
+      target="_blank">
+
+      Visit Project
+
+    </a>
+
+  </div>
+
+</div>
