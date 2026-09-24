@@ -6,7 +6,7 @@ export const profile = {
   tagline:
     'I build scalable web applications with modern FAST APIs frameworks.',
   availability: 'Available for opportunities',
-  resumeUrl: '/resume.htm', // drop your PDF in src/assets and update this path
+  resumeUrl: 'assets/resume.pdf', // drop your PDF in src/assets and update this path
   github: 'https://github.com/manjucsengineer1432',
   linkedin: 'https://www.linkedin.com/in/man0412/',
   extraLink: '', // e.g. npm, twitter — leave blank to hide
@@ -106,8 +106,14 @@ export const projects = [
 
 export const openSource = [
   {
-    name: 'Online Course(Salesforce) Tracker',
-    description: 'What this package or tool does, in a sentence.',
+    name: 'Students Online Courses(Salesforce) Tracker',
+    description: 'Developed a Python-based automation tool that tracks students’ online course progress using input data provided in Excel format.',
+                'Automates the process of collecting and consolidating student course-progress data.':
+                'Eliminates the need to manually visit individual student profiles and check their progress.',
+                'Generates and updates a structured Excel report with a single click. Helps engineering colleges efficiently monitor student learning activities, course completion, and overall progress.':
+                'Reduces manual effort and improves the accuracy and consistency of student progress reporting.',
+
+
     tags: ['TypeScript', 'CLI'],
     downloads: '0',
     stars: '0',
