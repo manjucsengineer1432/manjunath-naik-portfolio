@@ -7,6 +7,7 @@ export const profile = {
     'I build scalable web applications with modern FAST APIs frameworks.',
   availability: 'Available for opportunities',
   resumeUrl: 'assets/Manjunath_A_Naik_2026.pdf', // drop your PDF in src/assets and update this path
+   photo: 'assets/Profile.jpg',
   github: 'https://github.com/manjucsengineer1432',
   linkedin: 'https://www.linkedin.com/in/man0412/',
   extraLink: '', // e.g. npm, twitter — leave blank to hide

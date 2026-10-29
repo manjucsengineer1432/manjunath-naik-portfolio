@@ -1729,3 +1729,39 @@ html {
   }
 
 }
+
+
+
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+ .logo-container {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.profile-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
+  border: 2px solid #ffffff;
+} 
+
+.nav-inner {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.nav {
+  margin-top: 15px;
+}
+
+.logo-container {
+  transform: translateY(10px);
+}
