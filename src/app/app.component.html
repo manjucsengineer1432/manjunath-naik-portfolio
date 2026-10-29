@@ -1,4 +1,4 @@
-<header class="nav">
+<!-- <header class="nav">
   <div class="container nav-inner">
     <span class="logo">{{ profile.name.split(' ')[0] }}</span>
 
@@ -10,6 +10,32 @@
       <a href="#education">Education</a>
       <a href="#contact">Contact</a>
     </nav>
+  </div>
+</header> -->
+
+
+
+<header class="nav">
+  <div class="container nav-inner">
+
+    <div class="logo-container">
+      <img
+    [src]="profile.photo"
+    alt="Profile Photo"
+    class="profile-photo"
+  >
+    <span class="logo">{{ profile.name.split(' ')[0] }}</span>
+    </div>
+
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#opensource">Open Source</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
   </div>
 </header>
 
