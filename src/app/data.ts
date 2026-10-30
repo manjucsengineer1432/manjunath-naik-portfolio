@@ -27,7 +27,11 @@ strong interest in building scalable backend and AI-driven applications`;
 export const skillGroups = [
   {
     category: 'Frontend Development',
-    skills: ['React', 'Angular', 'TypeScript', 'JavaScript','Python', 'HTML5/CSS3'],
+    skills: ['React', 'Angular', 'TypeScript', 'JavaScript', 'HTML5/CSS3'],
+  },
+  {
+    category:'Programming Languages',
+    skills:['Python','Java (Basic)','C'],
   },
   {
     category: 'Backend & APIs',
@@ -66,9 +70,18 @@ export const experience = [
 
 export const projects = [
   {
+    title:"Agentic AI for Systematic Hedging for Enhanced Performance",
+    role:"Backend Developer",
+    description:'Developing an Agentic AI-based application designed to support systematic hedging strategies ',
+    'Improve financial portfolio performance. The project combines backend engineering, database management':
+    'AI-oriented system development to support financial analysis and risk-management workflows.',
+
+  },
+  
+  {
     title: 'FACIAL RECOGNITION TICKETING SYSTEM AT METRO STATIONS',
     role: 'Full Stack Developer',
-    features:'',
+    features:' ',
     description: 'Developed a Computer Vision based facial recognition system using CNN architectures for contactless metro ticketing.',
     'Built image preprocessing and feature extraction pipelines for real-time face identification.':
     'Designed REST APIs using Python for authentication and ticket validation workflows.',
